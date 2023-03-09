@@ -1,0 +1,186 @@
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.chat-adaptive {
+  --back: #eeeeee;
+  --text: #121212;
+  --subtext: #444040;
+  --primary: #8245f3;
+  --secondary: #bea5e9;
+  --cell: #cccccc;
+  --overlay: #bbbbbb;
+}
+
+@media (prefers-color-scheme: dark) {
+  .chat-adaptive {
+    --back: #222222;
+    --text: #e2e2ee;
+    --subtext: #444040;
+    --primary: #30106d;
+    --secondary: #3b2267;
+    --cell: #555555;
+    --overlay: #666666;
+  }
+}
+
+.chat {
+  display: flex;
+  flex-direction: column;
+
+  position: fixed;
+  bottom: 0;
+
+  width: 339px;
+  height: 470px;
+
+  background: var(--back);
+  color: var(--text);
+  background-repeat: no-repeat;
+
+  background-position: top;
+
+  transition: height 200ms ease-in-out;
+}
+
+.chat-center {
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.chat-left {
+  left: 16px;
+}
+
+.chat-right {
+  right: 16px;
+}
+
+.chat-closed {
+  height: 70px;
+}
+
+.chat-light {
+  --back: #eeeeee;
+  --text: #121212;
+  --subtext: #444040;
+  --primary: #8245f3;
+  --secondary: #bea5e9;
+  --cell: #cccccc;
+  --overlay: #bbbbbb;
+}
+
+.chat-dark {
+  --back: #222222;
+  --text: #e2e2ee;
+  --subtext: #444040;
+  --primary: #30106d;
+  --secondary: #3b2267;
+  --cell: #555555;
+  --overlay: #666666;
+}
+
+.chat-title {
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 100%;
+  height: 70px;
+
+  background-color: var(--primary);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  gap: 12px;
+  padding: 12px;
+
+  flex: 1;
+
+  width: 100%;
+
+  background-color: var(--back);
+
+  overflow-y: scroll;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+
+  position: relative;
+
+  background-color: var(--back);
+
+  width: 100%;
+  height: 48px;
+}
+
+.text {
+  all: unset;
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  width: 100%;
+  height: 100%;
+
+  padding-right: 80px;
+  background-color: var(--cell);
+}
+
+.enter {
+  all: unset;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 60px;
+  height: 32px;
+
+  background-color: var(--overlay);
+
+  text-align: center;
+  font-size: 12px;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.message {
+  overflow-wrap: break-word;
+  padding: 4px 12px;
+
+  max-width: 80%;
+
+  opacity: 0;
+  animation: appear 200ms forwards ease-in-out;
+}
+
+.message-sent {
+  background-color: var(--secondary);
+  border-radius: 20px 20px 0 20px;
+  align-self: flex-end;
+
+  transform: translateX(10px);
+}
+
+.message-received {
+  background-color: var(--cell);
+  border-radius: 20px 20px 20px 0;
+  align-self: flex-start;
+  transform: translateX(-10px);
+}
